@@ -31,8 +31,9 @@ const barbers = [
 ]
 
 export default function BookingModal({ isOpen, onClose, preselectedLocation }: BookingModalProps) {
+  // State variables for the booking flow
   const [step, setStep] = useState(1)
-  const [selectedLocation, setSelectedLocation] = useState(preselectedLocation || '')
+  const [selectedLocation, setSelectedLocation] = useState('')
   const [selectedService, setSelectedService] = useState('')
   const [selectedBarber, setSelectedBarber] = useState('any')
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
@@ -40,10 +41,10 @@ export default function BookingModal({ isOpen, onClose, preselectedLocation }: B
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     email: '',
-    phone: '',
+    phone: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<{[key: string]: string}>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [toast, setToast] = useState<{message: string, type: 'success' | 'error'} | null>(null)
 
   useEffect(() => {

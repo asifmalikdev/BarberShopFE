@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import Image from 'next/image'
-import BookingModal from './BookingModal'
+import BookingModalSimple from './BookingModalSimple'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -119,7 +119,7 @@ export default function Header() {
         )}
       </header>
 
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <BookingModalSimple isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </>
   )
 }
