@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import Image from 'next/image'
 import BookingModalSimple from './BookingModalSimple'
+import Link from './Link'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -17,18 +18,20 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="relative group">
-                <Image
-                  src="/images/exterior-logo.png"
-                  alt="New Style Barber Shop"
-                  width={180}
-                  height={70}
-                  className="h-14 w-auto rounded-lg shadow-md border border-brand-light-gray/50 transition-all duration-300 group-hover:shadow-lg group-hover:border-brand-red/30"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-brand-red/5 rounded-lg opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 rounded-lg ring-1 ring-brand-gold/20 group-hover:ring-brand-gold/40 transition-all duration-300"></div>
-              </div>
+              <Link href="/">
+                <div className="relative group">
+                  <Image
+                    src="/images/exterior-logo.png"
+                    alt="New Style Barber Shop"
+                    width={180}
+                    height={70}
+                    className="h-14 w-auto rounded-lg shadow-md border border-brand-light-gray/50 transition-all duration-300 group-hover:shadow-lg group-hover:border-brand-red/30"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-brand-red/5 rounded-lg opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 rounded-lg ring-1 ring-brand-gold/20 group-hover:ring-brand-gold/40 transition-all duration-300"></div>
+                </div>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
