@@ -12,7 +12,14 @@
     --brand-dark-text: 45, 55, 72;
     --brand-light-gray: 203, 213, 224;
     --brand-gold: 212, 175, 55;
-    
+
+    /* Luxury Palette */
+    --lux-bg: 24, 24, 27;
+    --lux-primary: 251, 191, 36;
+    --lux-accent: 225, 29, 72;
+    --lux-text: 243, 244, 246;
+    --lux-secondary: 39, 39, 42;
+
     /* Legacy support */
     --primary-red: 204, 0, 0;
     --primary-gold: 212, 175, 55;
@@ -22,8 +29,8 @@
 }
 
 body {
-  color: rgb(var(--brand-dark-text));
-  background-color: rgb(var(--brand-off-white));
+  color: rgb(var(--lux-text));
+  background-color: rgb(var(--lux-bg));
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
@@ -37,23 +44,23 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.6s ease-out;
   }
-  
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-  
+
   /* Barber pole stripes */
   .barber-stripes {
     background-image: repeating-linear-gradient(
@@ -68,7 +75,7 @@ body {
       rgb(var(--brand-white)) 80px
     );
   }
-  
+
   .barber-stripes-subtle {
     background-image: repeating-linear-gradient(
       45deg,
@@ -102,4 +109,26 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* Header styles */
+header {
+  @apply bg-lux-bg/95 border-b-2 border-lux-secondary/50 shadow-lg;
+}
+
+nav {
+  @apply flex justify-between items-center p-4;
+}
+
+nav a {
+  @apply text-lux-text hover:text-lux-primary;
+}
+
+nav button {
+  @apply bg-lux-accent text-lux-text hover:bg-lux-primary hover:text-lux-bg;
+}
+
+/* Footer styles */
+footer {
+  @apply bg-lux-secondary text-lux-text py-10;
 }

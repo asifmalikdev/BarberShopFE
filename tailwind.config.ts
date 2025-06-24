@@ -16,6 +16,12 @@ const config: Config = {
         'brand-dark-text': '#2D3748',
         'brand-light-gray': '#CBD5E0',
         'brand-gold': '#D4AF37',
+        // Luxury & Modern palette
+        'lux-bg': '#18181b',
+        'lux-primary': '#fbbf24',
+        'lux-accent': '#e11d48',
+        'lux-text': '#f3f4f6',
+        'lux-secondary': '#27272a',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

@@ -1,115 +1,61 @@
 'use client'
 
-import { Scissors, User, Users, Clock, Star, Sparkles } from 'lucide-react'
+import { Scissors, User, Sparkles, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 
 const services = [
 	{
-		name: "Men's Haircut",
-		price: "$35",
-		duration: "20 min",
-		description: "Precision cut tailored to your style by expert barbers. Includes wash, style, and finishing touches.",
-		icon: Scissors,
-		featured: true,
+		icon: <Scissors className="w-10 h-10 text-lux-primary" />,
+		title: "Modern Haircuts",
+		desc: "Trendy, classic, and custom cuts for all ages and styles.",
 	},
 	{
-		name: "Beard Trim",
-		price: "$20",
-		duration: "20 min",
-		description: "Shape and style your beard to perfection with premium products.",
-		icon: User,
+		icon: <User className="w-10 h-10 text-lux-primary" />,
+		title: "Beard Grooming",
+		desc: "Precision beard trims, shaping, and hot towel shaves.",
 	},
 	{
-		name: "Haircut + Beard",
-		price: "$50",
-		duration: "40 min",
-		description: "Complete grooming package for a sharp, fresh look.",
-		icon: Users,
+		icon: <Sparkles className="w-10 h-10 text-lux-primary" />,
+		title: "Styling & Finish",
+		desc: "Expert styling, blow-dry, and premium product finish.",
 	},
 	{
-		name: "Kids Haircut",
-		price: "$25",
-		duration: "20 min",
-		description: "Patient and friendly service for young ones in a fun environment.",
-		icon: User,
-	},
-	{
-		name: "Senior Haircut",
-		price: "$30",
-		duration: "20 min",
-		description: "Classic cuts with care and precision for seniors.",
-		icon: Clock,
+		icon: <ShieldCheck className="w-10 h-10 text-lux-primary" />,
+		title: "Kids & Seniors",
+		desc: "Gentle, stylish cuts for kids and seniors in a friendly setting.",
 	},
 ]
 
 export default function Services() {
 	return (
-		<section id="services" className="relative py-24 bg-gradient-to-br from-brand-blue/5 via-brand-gold/5 to-brand-red/10 overflow-hidden">
-			{/* Banner/Hero */}
-			<div className="relative z-10 mb-16 text-center">
-				<h2 className="text-5xl md:text-6xl font-extrabold text-brand-blue drop-shadow-lg flex items-center justify-center gap-2">
-					<Sparkles className="w-10 h-10 text-brand-gold animate-bounce" />
-					Premium Services
-				</h2>
-				<p className="mt-4 text-xl md:text-2xl text-brand-dark-text max-w-2xl mx-auto">
-					Experience the best in modern grooming. Our expert barbers deliver style, comfort, and confidence.
-				</p>
-			</div>
-
-			{/* Services Grid */}
+		<section className="relative py-20 bg-lux-bg" id="services">
 			<div className="container mx-auto px-4">
-				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-					{services.map((service, index) => {
-						const Icon = service.icon
-						return (
-							<div
-								key={index}
-								className={`relative bg-white border-2 rounded-3xl p-10 shadow-xl transition-all duration-300 group hover:scale-105 hover:border-brand-gold/60 ${service.featured ? 'border-brand-gold/80 shadow-brand-gold/30 scale-105' : 'border-brand-light-gray/40'}`}
-							>
-								{service.featured && (
-									<div className="absolute -top-4 -right-4 bg-brand-gold text-white px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md animate-pulse">
-										<Star className="w-4 h-4" /> Featured
-									</div>
-								)}
-								<div className="flex items-center justify-center mb-6">
-									<Icon className="w-12 h-12 text-brand-blue group-hover:text-brand-red transition-colors duration-300" />
-								</div>
-								<h3 className="text-2xl font-bold text-brand-blue mb-2 text-center">
-									{service.name}
-								</h3>
-								<div className="flex justify-center gap-4 mb-2">
-									<span className="text-lg font-semibold text-brand-red">{service.price}</span>
-									<span className="text-sm text-brand-light-gray">{service.duration}</span>
-								</div>
-								<p className="text-brand-dark-text text-center mb-4 min-h-[56px]">
-									{service.description}
-								</p>
-								<div className="flex justify-center">
-									<Link href="/" className="inline-block px-6 py-2 rounded-full bg-brand-blue text-white font-semibold shadow hover:bg-brand-red transition-colors duration-300">
-										Book Now
-									</Link>
-								</div>
-							</div>
-						)
-					})}
-				</div>
-
-				{/* CTA Section */}
-				<div className="mt-20 text-center">
-					<h4 className="text-2xl font-bold text-brand-blue mb-2">Not sure what to book?</h4>
-					<p className="text-brand-dark-text mb-6 text-lg max-w-xl mx-auto">
-						Walk in for a free consultation or contact us for personalized recommendations. We’re here to help you look your best!
+				<div className="text-center mb-14">
+					<h2 className="text-4xl md:text-5xl font-extrabold text-lux-primary mb-2 tracking-wide drop-shadow-lg">
+						Our Services
+					</h2>
+					<div className="mx-auto w-24 h-1 bg-lux-primary rounded-full mb-4" />
+					<p className="text-lg text-lux-text/80 max-w-xl mx-auto">
+						Experience the best in modern barbering with our full range of grooming services.
 					</p>
-					<Link href="/" className="inline-block px-8 py-3 rounded-full bg-brand-gold text-white font-bold shadow-lg hover:bg-brand-blue hover:text-brand-gold transition-colors duration-300">
-						Contact Us
-					</Link>
+				</div>
+				<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+					{services.map((service, idx) => (
+						<div
+							key={idx}
+							className="group bg-lux-secondary rounded-2xl shadow-xl p-8 flex flex-col items-center text-center border border-lux-primary/20 hover:border-lux-primary hover:shadow-2xl transition-all duration-300"
+						>
+							<div className="mb-6">{service.icon}</div>
+							<h3 className="text-2xl font-bold text-lux-primary mb-2 group-hover:text-lux-accent transition-colors">
+								{service.title}
+							</h3>
+							<p className="text-lux-text/80">{service.desc}</p>
+						</div>
+					))}
 				</div>
 			</div>
-
-			{/* Decorative background stripes */}
-			<div className="absolute inset-0 pointer-events-none opacity-10 z-0">
-				<div className="absolute inset-0 barber-stripes-subtle" />
-			</div>
+			{/* Decorative gold gradient circle */}
+			<div className="absolute -bottom-32 -right-32 w-96 h-96 bg-lux-primary opacity-10 rounded-full blur-3xl pointer-events-none" />
 		</section>
 	)
 }
