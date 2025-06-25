@@ -39,98 +39,81 @@ export default function Locations() {
 
 	return (
 		<>
-			<section
-				id="locations"
-				className="relative min-h-screen py-20 bg-gradient-to-br from-blue-50 via-yellow-50 to-pink-100 overflow-hidden"
-			>
-				<div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-3xl -z-10" />
-				<div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400 opacity-20 rounded-full blur-3xl -z-10" />
+			<section className="relative py-20 bg-lux-bg" id="locations">
 				<div className="container mx-auto px-4">
-					<div className="text-center mb-16">
-						<h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-blue-600 mb-4 drop-shadow-2xl">
+					<div className="text-center mb-14">
+						<h2 className="text-4xl md:text-5xl font-extrabold text-lux-primary mb-2 tracking-wide drop-shadow-lg animate-fade-in">
 							Our Locations
 						</h2>
-						<p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-							Two convenient locations to serve you better
+						<div className="mx-auto w-24 h-1 bg-gradient-to-r from-lux-accent via-lux-primary to-lux-accent rounded-full mb-4 animate-slide-up" />
+						<p className="text-lg text-lux-text/80 max-w-xl mx-auto animate-fade-in animation-delay-200">
+							Visit us at any of our premium locations in Milton.
 						</p>
 					</div>
-
-					<div className="grid md:grid-cols-2 gap-14 max-w-6xl mx-auto">
-						{locations.map((location, index) => (
+					<div className="grid md:grid-cols-2 gap-12">
+						{locations.map((location, idx) => (
 							<div
 								key={location.id}
-								className="relative bg-white bg-opacity-90 rounded-3xl shadow-2xl p-10 flex flex-col gap-6 border border-gray-200 hover:scale-[1.03] hover:shadow-3xl transition-transform duration-300"
+								className="group bg-gradient-to-br from-lux-secondary via-lux-bg to-black rounded-3xl shadow-2xl p-8 border border-lux-primary/20 hover:border-lux-primary hover:shadow-3xl transition-all duration-300 animate-fade-in flex flex-col gap-6"
 								style={{
-									boxShadow:
-										'0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 1.5px 6px 0 rgba(255, 193, 7, 0.10)',
+									animationDelay: `${100 + idx * 120}ms`,
+									animationFillMode: 'both',
 								}}
 							>
-								<div className="absolute -top-8 -right-8 w-28 h-28 bg-blue-400 opacity-20 rounded-full blur-2xl pointer-events-none" />
-								{/* Location Image */}
-								<div className="h-48 relative overflow-hidden rounded-2xl shadow-lg">
+								{/* 3D Floating Location Image */}
+								<div className="relative w-full h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-lux-primary/30 mb-4 animate-hero-float">
 									<Image
 										src="/images/exterior-logo.png"
 										alt={location.name}
 										fill
-										className="object-cover group-hover:scale-105 transition-transform duration-300"
+										className="object-cover"
 									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-									<div className="absolute top-4 right-4 bg-brand-red/90 backdrop-blur-sm px-3 py-1 rounded-full shadow">
-										<span className="text-sm text-brand-white font-bold">
-											Location {index + 1}
+									<div className="absolute inset-0 bg-black/70" />
+									<div className="absolute top-4 right-4 bg-lux-accent/90 backdrop-blur-sm px-3 py-1 rounded-full shadow">
+										<span className="text-sm text-lux-text font-bold">
+											{location.name}
 										</span>
 									</div>
 								</div>
-
 								{/* Location Details */}
 								<div>
-									<h3 className="text-2xl font-bold text-blue-700 mb-4 drop-shadow">
-										{location.name}
-									</h3>
-
-									<div className="space-y-3 mb-6">
-										<div className="flex items-start gap-3 text-gray-700 font-medium">
-											<MapPin className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />
-											<div>
-												<div>{location.address}</div>
-												<div>{location.city}</div>
-											</div>
-										</div>
-
-										<div className="flex items-center gap-3 text-gray-700 font-medium">
-											<Phone className="w-6 h-6 text-green-600 flex-shrink-0" />
-											<a
-												href={`tel:${location.phone.replace(/[^0-9]/g, '')}`}
-												className="hover:text-brand-red transition-colors"
-											>
-												{location.phone}
-											</a>
-										</div>
-
-										<div className="flex items-center gap-3 text-gray-700 font-medium">
-											<Clock className="w-6 h-6 text-yellow-500 flex-shrink-0" />
-											<span>Daily: {location.hours}</span>
-										</div>
+									<div className="flex items-center gap-3 text-lux-text font-medium mb-2">
+										<MapPin className="w-6 h-6 text-lux-primary" />
+										<span>
+											{location.address}, {location.city}
+										</span>
 									</div>
-
-									<div className="rounded-xl overflow-hidden border-2 border-blue-200 shadow-lg mt-4">
+									<div className="flex items-center gap-3 text-lux-text font-medium mb-2">
+										<Phone className="w-6 h-6 text-lux-accent" />
+										<a
+											href={`tel:${location.phone.replace(/[^0-9]/g, '')}`}
+											className="hover:text-lux-primary transition-colors"
+										>
+											{location.phone}
+										</a>
+									</div>
+									<div className="flex items-center gap-3 text-lux-text font-medium mb-4">
+										<Clock className="w-6 h-6 text-lux-primary" />
+										<span>Daily: {location.hours}</span>
+									</div>
+									<div className="relative rounded-xl overflow-hidden border-2 border-lux-primary/20 shadow-lg mt-2 animate-pop-in">
 										<iframe
 											src={location.mapEmbed}
 											title={location.name}
 											width="100%"
-											height="220"
+											height="180"
 											className="w-full"
 											loading="lazy"
 											referrerPolicy="no-referrer-when-downgrade"
 											style={{ border: 0 }}
 											allowFullScreen
 										/>
+										<div className="absolute inset-0 bg-black/60 pointer-events-none" />
 									</div>
-
 									<div className="flex gap-3 mt-6">
 										<button
 											onClick={() => handleBookLocation(location.id)}
-											className="flex-1 bg-gradient-to-r from-blue-600 to-yellow-400 text-white px-4 py-3 rounded-full font-semibold shadow-lg hover:from-yellow-400 hover:to-blue-600 hover:scale-105 transition-all"
+											className="flex-1 bg-gradient-to-r from-lux-accent to-lux-primary text-lux-text px-4 py-3 rounded-full font-semibold shadow-lg hover:from-lux-primary hover:to-lux-accent hover:scale-105 transition-all"
 										>
 											Book Here
 										</button>
@@ -138,7 +121,7 @@ export default function Locations() {
 											href={location.mapEmbed.replace('embed?', 'maps?')}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="flex-1 border-2 border-yellow-400 text-yellow-700 px-4 py-3 rounded-full font-semibold hover:bg-yellow-50 hover:border-yellow-500 transition-all text-center shadow"
+											className="flex-1 border-2 border-lux-primary text-lux-primary px-4 py-3 rounded-full font-semibold hover:bg-lux-primary/10 hover:border-lux-accent transition-all text-center shadow"
 										>
 											Get Directions
 										</a>
@@ -148,8 +131,10 @@ export default function Locations() {
 						))}
 					</div>
 				</div>
+				{/* Decorative gradient circles for 3D effect */}
+				<div className="absolute -bottom-32 -right-32 w-96 h-96 bg-lux-primary opacity-10 rounded-full blur-3xl pointer-events-none" />
+				<div className="absolute -top-24 -left-24 w-72 h-72 bg-lux-accent opacity-10 rounded-full blur-3xl pointer-events-none" />
 			</section>
-
 			<BookingModal
 				isOpen={isBookingOpen}
 				onClose={() => {

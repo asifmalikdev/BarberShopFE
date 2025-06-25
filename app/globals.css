@@ -89,6 +89,35 @@ body {
       rgba(var(--brand-white), 0.05) 80px
     );
   }
+
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 16px #fbbf24cc);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite alternate;
+  }
+  .animate-float-slow {
+    animation: float 10s ease-in-out infinite alternate;
+  }
+  .animate-pop-in {
+    animation: popIn 0.8s cubic-bezier(.23,1.02,.74,1) forwards;
+  }
+  .animate-hero-sphere1 {
+    animation: heroSphere1 12s ease-in-out infinite alternate;
+  }
+  .animate-hero-sphere2 {
+    animation: heroSphere2 14s ease-in-out infinite alternate;
+  }
+  .animate-hero-sphere3 {
+    animation: heroSphere3 10s ease-in-out infinite alternate;
+  }
+  .animate-hero-glass {
+    animation: heroGlassPop 1.2s cubic-bezier(.23,1.02,.74,1.01) both;
+  }
+  .animate-hero-float {
+    animation: heroFloat 8s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes fadeIn {
@@ -108,6 +137,70 @@ body {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translatey(0);
+  }
+  50% {
+    transform: translatey(-10px);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroSphere1 {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-30px) scale(1.08) rotate(8deg);
+  }
+}
+@keyframes heroSphere2 {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30px) scale(1.1) rotate(-10deg);
+  }
+}
+@keyframes heroSphere3 {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-60%, -60%) scale(1.13);
+  }
+}
+@keyframes heroGlassPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-24px) scale(1.04);
   }
 }
 

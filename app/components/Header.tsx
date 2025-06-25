@@ -45,6 +45,12 @@ export default function Header() {
               <a href="#team" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
                 Our Team
               </a>
+              <a href="/blog" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
+                Blog
+              </a>
+              {/* <a href="#locations" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
+                Locations
+              </a> */}
               <a href="#footer" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
                 Contact
               </a>
@@ -90,6 +96,20 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Our Team
+              </a>
+              <a
+                href="/blog"
+                className="text-lux-text hover:text-lux-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </a>
+              <a
+                href="#locations"
+                className="text-lux-text hover:text-lux-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Locations
               </a>
               <a
                 href="#footer"
