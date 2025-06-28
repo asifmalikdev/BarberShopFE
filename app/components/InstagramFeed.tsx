@@ -1,10 +1,10 @@
 'use client'
 
 export default function InstagramFeed() {
-  const images = [
-    '/images/insta1.jpg',
-    '/images/insta2.jpg',
-    '/images/insta3.jpg',
+  const media = [
+    '/images/insta-page-left-image.jpg',
+    '/images/insta video.mp4',
+    '/images/insta-page-right-image.jpg',
   ]
 
   return (
@@ -18,25 +18,36 @@ export default function InstagramFeed() {
       </h2>
       <div className="relative w-full max-w-5xl flex justify-center z-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 w-full">
-          {images.map((src, idx) => (
+          {media.map((src, idx) => (
             <div
               key={idx}
               className="rounded-[2.5rem] overflow-hidden border-4 border-lux-primary/40 bg-lux-bg/90 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_48px_0_rgba(251,191,36,0.18)]"
-              style={{ minHeight: 340 }}
+              style={{ minHeight: 440 }} // Increased from 340 to 440
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={`Instagram trial ${idx + 1}`}
-                className="w-full h-[340px] object-cover"
-              />
+              {src.endsWith('.mp4') ? (
+                <video
+                  src={src}
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full h-[440px] object-cover" // Increased from h-[340px] to h-[440px]
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={src}
+                  alt={`Instagram trial ${idx + 1}`}
+                  className="w-full h-[440px] object-cover" // Increased from h-[340px] to h-[440px]
+                />
+              )}
             </div>
           ))}
         </div>
       </div>
       <p className="mt-12 text-lux-text/70 text-lg z-10 flex items-center gap-2">
         <a
-          href="https://instagram.com/new_style_barber"
+          href="https://www.instagram.com/newstylebarbershop50"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-lux-accent font-semibold hover:text-lux-primary transition-colors"
@@ -54,7 +65,7 @@ export default function InstagramFeed() {
             <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/>
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
           </svg>
-          @new_style_barber
+          @newstylebarbershop50
         </a>
       </p>
     </section>

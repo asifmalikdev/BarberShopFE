@@ -18,19 +18,20 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <Link href="/">
-                <div className="relative group">
+              <Link href="/" className="flex items-center gap-3 group">
+                <span className="inline-flex items-center justify-center bg-white/80 rounded-full shadow-lg border-2 border-lux-primary/30 p-2 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                   <Image
-                    src="/images/exterior-logo.png"
+                    src="/images/logo.jpeg"
                     alt="New Style Barber Shop"
-                    width={180}
-                    height={70}
-                    className="h-14 w-auto rounded-lg shadow-md border border-lux-secondary/50 transition-all duration-300 group-hover:shadow-lg group-hover:border-lux-accent/30"
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-lux-primary/10 to-lux-accent/10 rounded-lg opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 rounded-lg ring-1 ring-lux-primary/20 group-hover:ring-lux-accent/40 transition-all duration-300"></div>
-                </div>
+                </span>
+                {/* <span className="font-extrabold text-xl md:text-2xl text-lux-primary tracking-wide drop-shadow-glow group-hover:text-lux-accent transition-colors">
+                  New Style
+                </span> */}
               </Link>
             </div>
 

@@ -10,45 +10,13 @@ interface BookingModalProps {
 }
 
 const services = [
-  { 
-    id: 'mens-cut', 
-    name: "Men's Haircut", 
-    price: 35, 
-    duration: 20,
-    // Replace with your actual Calendly/booking URLs
-    bookingUrl: 'https://calendly.com/new-style-barber/mens-haircut'
-  },
-  { 
-    id: 'beard', 
-    name: 'Beard Trim', 
-    price: 20, 
-    duration: 20,
-    bookingUrl: 'https://calendly.com/new-style-barber/beard-trim'
-  },
-  { 
-    id: 'combo', 
-    name: 'Haircut + Beard', 
-    price: 50, 
-    duration: 40,
-    bookingUrl: 'https://calendly.com/new-style-barber/haircut-beard'
-  },
-  { 
-    id: 'kids', 
-    name: 'Kids Haircut', 
-    price: 25, 
-    duration: 20,
-    bookingUrl: 'https://calendly.com/new-style-barber/kids-haircut'
-  },
-  { 
-    id: 'senior', 
-    name: 'Senior Haircut', 
-    price: 30, 
-    duration: 20,
-    bookingUrl: 'https://calendly.com/new-style-barber/senior-haircut'
-  },
+  { id: 'mens-cut', name: "Men's Haircut", price: 35, duration: 20 },
+  { id: 'beard', name: 'Beard Trim', price: 20, duration: 20 },
+  { id: 'combo', name: 'Haircut + Beard', price: 50, duration: 40 },
+  { id: 'kids', name: 'Kids Haircut', price: 25, duration: 20 },
+  { id: 'senior', name: 'Senior Haircut', price: 30, duration: 20 },
 ]
 
-// Alternative booking services you can use
 const bookingServices = {
   calendly: {
     name: 'Calendly',
@@ -71,24 +39,24 @@ const bookingServices = {
 }
 
 export default function BookingModalSimple({ isOpen, onClose }: BookingModalProps) {
-  const [selectedService, setSelectedService] = useState('')
-  const [bookingMethod, setBookingMethod] = useState<'widget' | 'redirect'>('redirect')
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [form, setForm] = useState({ name: '', phone: '', date: '', time: '' })
 
   if (!isOpen) return null
 
   const handleServiceSelect = (service: typeof services[0]) => {
-    setSelectedService(service.id)
-    
-    if (bookingMethod === 'redirect') {
-      // Open booking service in new tab
-      window.open(service.bookingUrl, '_blank')
-      onClose()
-    } else {
-      // Could embed widget here
-      // For now, redirect
-      window.open(service.bookingUrl, '_blank')
-      onClose()
-    }
+    setSelectedService(service)
+    setShowConfirmation(false)
+  }
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleBookingSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setShowConfirmation(true)
   }
 
   const handlePhoneBooking = () => {
@@ -111,6 +79,17 @@ export default function BookingModalSimple({ isOpen, onClose }: BookingModalProp
         </div>
 
         <div className="p-6">
+          {/* Business Info */}
+          <div className="mb-6 text-center">
+            <div className="font-semibold text-brand-dark-text text-lg">
+              6050 Main St W Unit 1, Milton, ON
+            </div>
+            <div className="text-brand-blue text-base mt-1">
+              <a href="tel:+13658776644" className="hover:underline">
+                +1 365-877-6644
+              </a>
+            </div>
+          </div>
           {/* Booking Options */}
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-brand-dark-text mb-4">Choose Your Booking Method</h3>
@@ -122,28 +101,86 @@ export default function BookingModalSimple({ isOpen, onClose }: BookingModalProp
                   <h4 className="font-semibold text-brand-dark-text">Online Booking</h4>
                 </div>
                 <p className="text-brand-light-text text-sm mb-4">
-                  Select a service below to book instantly online with available time slots.
+                  Select a service and fill out your details to book instantly online.
                 </p>
                 <div className="space-y-2">
-                  {services.map((service) => (
-                    <button
-                      key={service.id}
-                      onClick={() => handleServiceSelect(service)}
-                      className="w-full text-left p-3 border border-brand-light-gray rounded hover:border-brand-red hover:bg-brand-red/5 transition-all group"
-                    >
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <span className="font-medium text-brand-dark-text group-hover:text-brand-red">
-                            {service.name}
-                          </span>
-                          <span className="text-sm text-brand-light-text block">
-                            {service.duration} min • ${service.price}
-                          </span>
-                        </div>
-                        <ExternalLink size={16} className="text-brand-light-text group-hover:text-brand-red" />
+                  {showConfirmation ? (
+                    <div className="text-center text-brand-blue font-semibold py-8">
+                      Thank you! Your booking has been received.<br />
+                      We’ll contact you soon to confirm your appointment.
+                    </div>
+                  ) : selectedService ? (
+                    <form onSubmit={handleBookingSubmit} className="flex flex-col gap-3">
+                      <div className="font-medium text-brand-dark-text mb-2">
+                        Service: <span className="text-brand-blue">{selectedService.name}</span>
                       </div>
-                    </button>
-                  ))}
+                      <input
+                        name="name"
+                        required
+                        placeholder="Your Name"
+                        className="input input-bordered"
+                        value={form.name}
+                        onChange={handleFormChange}
+                      />
+                      <input
+                        name="phone"
+                        required
+                        placeholder="Phone Number"
+                        className="input input-bordered"
+                        value={form.phone}
+                        onChange={handleFormChange}
+                      />
+                      <input
+                        name="date"
+                        type="date"
+                        required
+                        className="input input-bordered"
+                        value={form.date}
+                        onChange={handleFormChange}
+                      />
+                      <input
+                        name="time"
+                        type="time"
+                        required
+                        className="input input-bordered"
+                        value={form.time}
+                        onChange={handleFormChange}
+                      />
+                      <button
+                        type="submit"
+                        className="bg-brand-blue text-white font-bold py-2 rounded-xl hover:bg-brand-dark-text transition"
+                      >
+                        Book Now
+                      </button>
+                      <button
+                        type="button"
+                        className="text-brand-red mt-2 underline"
+                        onClick={() => setSelectedService(null)}
+                      >
+                        &larr; Back to services
+                      </button>
+                    </form>
+                  ) : (
+                    services.map((service) => (
+                      <button
+                        key={service.id}
+                        onClick={() => handleServiceSelect(service)}
+                        className="w-full text-left p-3 border border-brand-light-gray rounded hover:border-brand-red hover:bg-brand-red/5 transition-all group"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <span className="font-medium text-brand-dark-text group-hover:text-brand-red">
+                              {service.name}
+                            </span>
+                            <span className="text-sm text-brand-light-text block">
+                              {service.duration} min • ${service.price}
+                            </span>
+                          </div>
+                          <ExternalLink size={16} className="text-brand-light-text group-hover:text-brand-red" />
+                        </div>
+                      </button>
+                    ))
+                  )}
                 </div>
               </div>
 
@@ -160,7 +197,7 @@ export default function BookingModalSimple({ isOpen, onClose }: BookingModalProp
                   onClick={handlePhoneBooking}
                   className="w-full bg-brand-gold text-brand-white py-3 px-4 rounded-lg font-semibold hover:bg-brand-gold/90 transition-colors flex items-center justify-center gap-2"
                 >
-                  <span>(365) 877-6644</span>
+                  <span>+1 365-877-6644</span>
                 </button>
                 <p className="text-xs text-brand-light-text mt-2 text-center">
                   Mon-Sat: 10am-7pm

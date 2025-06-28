@@ -13,7 +13,7 @@ export default function Hero() {
         {/* 3D Animated Glass Card */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="/images/photo-1671750145646-0f4d791b8025.avif"
+            src="/images/hero-page-img.jpeg"
             alt="Barber Shop Background"
             fill
             className="object-cover object-center opacity-60"
@@ -46,7 +46,7 @@ export default function Hero() {
         {/* 3D Floating Barber Image */}
         <div className="relative w-full md:w-[420px] h-[300px] md:h-[420px] mt-12 md:mt-0 rounded-3xl shadow-2xl overflow-hidden border-4 border-lux-primary/20 z-10 animate-hero-float">
           <Image
-            src="/images/photo-1671750145646-0f4d791b8025.avif"
+            src="/images/hero-page-img.jpeg"
             alt="Barber Shop Hero"
             fill
             className="object-cover"

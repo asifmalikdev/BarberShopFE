@@ -21,7 +21,7 @@ Modern barber shop website with responsive design, booking system, and professio
 - **Status**: All Instagram functionality purged from codebase
 
 ### **3. Header & Footer Enhancement**
-- **Logo Implementation** - Uses `exterior-logo.png` with enhanced styling
+- **Logo Implementation** - Uses `logo.jpeg` with enhanced styling
 - **Navigation Structure** - 5 main sections: Home, Services, Our Team, Locations, Contact
 - **Responsive Design** - Mobile hamburger menu with all navigation items
 - **Visual Effects** - Gradients, shadows, hover effects, gold accents

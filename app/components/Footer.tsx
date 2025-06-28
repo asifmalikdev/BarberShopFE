@@ -12,21 +12,24 @@ export default function Footer() {
 
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
         {/* Logo & Tagline */}
-        <div className="flex flex-col items-center md:items-start gap-3">
-          <Image
-            src="/images/exterior-logo.png"
-            alt="New Style Barber Shop"
-            width={120}
-            height={48}
-            className="rounded-lg shadow-md border border-lux-primary/30 bg-lux-bg"
-          />
+        <Link href="/" className="flex flex-col items-center md:items-start gap-3 group">
+          <span className="inline-flex items-center justify-center bg-white/80 rounded-full shadow-lg border-2 border-lux-primary/30 p-3">
+            <Image
+              src="/images/logo.jpeg"
+              alt="New Style Barber Shop"
+              width={72}
+              height={72}
+              className="rounded-full object-cover"
+              priority
+            />
+          </span>
           <span className="text-lux-primary font-semibold text-lg">
             New Style Barber Shop
           </span>
           <span className="text-lux-text/70 text-sm">
             Premium Cuts & Grooming in Milton
           </span>
-        </div>
+        </Link>
 
         {/* Navigation */}
         <nav className="flex flex-col md:flex-row items-center gap-6 text-base font-medium">
