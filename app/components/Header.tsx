@@ -37,9 +37,9 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
+              <Link href="/" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
                 Home
-              </a>
+              </Link>
               <a href="#services" className="text-lux-text hover:text-lux-primary transition-colors font-medium">
                 Services
               </a>

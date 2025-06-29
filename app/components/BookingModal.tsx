@@ -12,8 +12,7 @@ interface BookingModalProps {
 }
 
 const locations = [
-  { id: 'location1', name: 'Milton - Main Street' },
-  { id: 'location2', name: 'Milton - Location 2' },
+  { id: 'location1', name: 'New Style Barber Shop - 6050 Main St W Unit 1, Milton, ON' },
 ]
 
 const services = [

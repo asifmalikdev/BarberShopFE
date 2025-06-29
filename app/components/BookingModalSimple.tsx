@@ -56,6 +56,11 @@ export default function BookingModalSimple({ isOpen, onClose }: BookingModalProp
 
   const handleBookingSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    // Simple validation
+    if (!form.name.trim() || !form.phone.trim() || !form.date.trim() || !form.time.trim()) {
+      alert('Please fill in all fields.')
+      return
+    }
     setShowConfirmation(true)
   }
 
@@ -130,22 +135,45 @@ export default function BookingModalSimple({ isOpen, onClose }: BookingModalProp
                         value={form.phone}
                         onChange={handleFormChange}
                       />
-                      <input
-                        name="date"
-                        type="date"
-                        required
-                        className="input input-bordered"
-                        value={form.date}
-                        onChange={handleFormChange}
-                      />
-                      <input
-                        name="time"
-                        type="time"
-                        required
-                        className="input input-bordered"
-                        value={form.time}
-                        onChange={handleFormChange}
-                      />
+
+                      <label className="text-sm font-semibold text-brand-dark-text" htmlFor="date">
+                        Date
+                      </label>
+                      <div className="relative">
+                        <input
+                          id="date"
+                          name="date"
+                          type="date"
+                          required
+                          className="input input-bordered pl-10 py-2 focus:ring-2 focus:ring-brand-blue"
+                          value={form.date}
+                          onChange={handleFormChange}
+                          style={{ backgroundColor: "#f8fafc" }}
+                        />
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-blue pointer-events-none">
+                          <Calendar size={18} />
+                        </span>
+                      </div>
+
+                      <label className="text-sm font-semibold text-brand-dark-text mt-2" htmlFor="time">
+                        Time
+                      </label>
+                      <div className="relative">
+                        <input
+                          id="time"
+                          name="time"
+                          type="time"
+                          required
+                          className="input input-bordered pl-10 py-2 focus:ring-2 focus:ring-brand-blue"
+                          value={form.time}
+                          onChange={handleFormChange}
+                          style={{ backgroundColor: "#f8fafc" }}
+                        />
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-blue pointer-events-none">
+                          <Clock size={18} />
+                        </span>
+                      </div>
+
                       <button
                         type="submit"
                         className="bg-brand-blue text-white font-bold py-2 rounded-xl hover:bg-brand-dark-text transition"

@@ -35,12 +35,12 @@ export default function Hero() {
           <p className="text-xl md:text-2xl text-lux-text mb-8 font-medium animate-fade-in animation-delay-200">
             Experience premium haircuts and grooming in Milton.<br />Book your appointment today!
           </p>
-          <a
-            href="#booking"
-            className="inline-block bg-lux-accent text-lux-text px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-lux-primary hover:text-lux-bg transition-all animate-fade-in animation-delay-400"
-          >
-            Book Now
-          </a>
+          <button
+                onClick={() => setIsBookingOpen(true)}
+                className="bg-lux-accent text-lux-text px-6 py-2 rounded-full font-semibold hover:bg-lux-primary hover:text-lux-bg transition-all transform hover:scale-105 shadow-lg"
+              >
+                Book Now
+              </button>
         </div>
 
         {/* 3D Floating Barber Image */}
